@@ -22,4 +22,12 @@ public class UsersController : ControllerBase
 
         return users;
     }
+
+    [HttpGet("{id}")]
+    public ActionResult<AppUser> Get(int id)
+    {
+        var user = _context.Users.Find(id);
+
+        return user;
+    }
 }
