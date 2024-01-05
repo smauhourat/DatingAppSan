@@ -10,9 +10,13 @@ export class AppComponent implements OnInit {
   title = 'Dating App';
   users: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.http.get('http://localhost:5000/api/users').subscribe({
+      next: response => this.users = response,
+      error: error => console.log(error),
+      complete: () => console.log('Request is completed!')
+    })
   }
 
 }
