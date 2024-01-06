@@ -226,6 +226,9 @@ AppPackages/
 *.db-shm
 *.db-wal
 
+# ssl
+*.pem
+
 #####
 # End of core ignore list, below put you custom 'per project' settings (patterns or path)
 #####
