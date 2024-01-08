@@ -12,7 +12,7 @@ public class TokenService : ITokenService
 
     public TokenService(IConfiguration config)
     {
-        this._key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["ToeknKey"]));
+        this._key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
     }
 
     public string CreateToken(AppUser user)
