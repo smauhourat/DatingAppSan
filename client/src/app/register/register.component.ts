@@ -7,7 +7,6 @@ import { AccountService } from '../_services/account.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  @Input() usersFromHomeComponent: any;
   @Output() cancelRegister = new EventEmitter();
   model: any = {}
 
@@ -17,8 +16,13 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    console.log(this.model);
-    //this.accountService.
+    this.accountService.register(this.model).subscribe({
+      next: response => {
+        console.log(response);
+        this.cancel();
+      },
+      error: error => console.log(error)
+    });
   }
 
   cancel() {
