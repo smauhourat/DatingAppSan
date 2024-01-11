@@ -33,4 +33,13 @@ public class UsersController : BaseApiController
 
         return user;
     }
+
+    [HttpDelete("{username}")]
+    [AllowAnonymous]
+    public async Task<ActionResult> DeleteUser(string username)
+    {
+        await _context.Users.Where(x => x.UserName == username).ExecuteDeleteAsync();
+
+        return Accepted(username);
+    }
 }
