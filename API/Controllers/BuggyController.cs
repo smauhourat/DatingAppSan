@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
-[AllowAnonymous]
+[Authorize]
 public class BuggyController : BaseApiController
 {
     private readonly DataContext _context;
@@ -14,13 +14,13 @@ public class BuggyController : BaseApiController
         this._context = context;
     }
 
-    [Authorize]
     [HttpGet("auth")]
     public ActionResult<string> GetSecret()
     {
         return "secret text";
     }
 
+    [AllowAnonymous]
     [HttpGet("not-found")]
     public ActionResult<AppUser> GetNotFound()
     {
@@ -29,6 +29,7 @@ public class BuggyController : BaseApiController
         return thing;
     }
 
+    [AllowAnonymous]
     [HttpGet("server-error")]
     public ActionResult<string> GetServerError()
     {
@@ -37,6 +38,7 @@ public class BuggyController : BaseApiController
         return thingToReturn;
     }
 
+    [AllowAnonymous]
     [HttpGet("bad-request")]
     public ActionResult<string> GetBadRequest()
     {
