@@ -15,7 +15,7 @@ export class TestErrorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+
   }
 
   get404Error() {
