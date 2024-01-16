@@ -1,4 +1,21 @@
-<div class="container">
-    <h1>Server error</h1>
-    <button class="btn btn-info btn-lg" routerLink="/">Return to home page</button>
-</div>
+<h4>Internal Server error</h4>
+<ng-container *ngIf="error">
+    <h5 class="text-danger">
+        Error: {{error.message}}
+    </h5>
+    <p class="fw-bold">Note: If you are seeing this then angular is probably not to blame</p>
+    <p>
+        What to do next?
+    </p>
+    <ol>
+        <li>Open chrome dev tools! then check the failing request in the network tab</li>
+        <li>Examine the request URL - what API endpoint are you requesting</li>
+        <li>Reproduce the problem in Postman - if we get same error Andular is 100% not the problem</li>
+    </ol>
+    <p class="fw-bold">Following this stack trace - the first few lines will tell you which line of code caused
+        the issue in the API
+    </p>
+    <code class="mt-3 bg-light">
+        {{error.details}}
+    </code>
+</ng-container>
